@@ -49,16 +49,8 @@ jobs:
       - name: bertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
-  cort:
-    needs: [bert]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: hertob
-        continue-on-error: true
-        run: echo cort
   gert:
-    needs: [cort]
+    needs: [hert]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     strategy:
