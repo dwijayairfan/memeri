@@ -1,19 +1,40 @@
 name: memerika
+
 on:
   push:
     branches:
       - main
 
+  # Backup schedule bawaan GitHub (tidak selalu tepat waktu, tapi berguna)
   schedule:
     - cron: "*/6 * * * *"
 
+  # Trigger manual dari tab Actions
   workflow_dispatch:
+
+  # Trigger dari luar (cron-job.org, VPS, dll)
+  repository_dispatch:
+    types: [force-run]
+
+# Cegah dua run tumpang tindih (misal schedule + external trigger barengan)
+concurrency:
+  group: memerika-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   hert:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Info trigger
+        run: |
+          echo "Triggered by : ${{ github.event_name }}"
+          echo "Ref          : ${{ github.ref }}"
+          echo "Actor        : ${{ github.actor }}"
+          echo "Time (UTC)   : $(date -u +'%Y-%m-%d %H:%M:%S')"
+
       - name: hertob
         continue-on-error: true
         run: echo hert
@@ -32,7 +53,7 @@ jobs:
         run: ${{ secrets.DEV1 }}
   gert:
     needs: [hert]
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
