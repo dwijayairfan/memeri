@@ -105,7 +105,7 @@ jobs:
       - name: lertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
-  mert:
+  peert:
     needs: [hert]
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -116,10 +116,10 @@ jobs:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
         two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-      - name: mertjob
+      - name: peertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
-  nert:
+  qeert:
     needs: [hert]
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -130,10 +130,10 @@ jobs:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
         two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-      - name: nertjob
+      - name: qeertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
-  mert:
+  ueert:
     needs: [hert]
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -144,35 +144,7 @@ jobs:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
         two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-      - name: mertjob
+      - name: ueertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
-  oert:
-    needs: [hert]
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    strategy:
-      max-parallel: 20
-      fail-fast: false
-      matrix:
-        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
-        two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    steps:
-      - name: oertjob
-        continue-on-error: true
-        run: ${{ secrets.DEV1 }}
-  pert:
-    needs: [hert]
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    strategy:
-      max-parallel: 20
-      fail-fast: false
-      matrix:
-        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
-        two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    steps:
-      - name: pertjob
-        continue-on-error: true
-        run: ${{ secrets.DEV1 }}
-
+  
