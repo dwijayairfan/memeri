@@ -25,21 +25,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj]
+        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
         two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: bertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
 
-  cert:
-    needs: [hert]
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        three: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj]
-        fourt: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: certjob
         continue-on-error: true
