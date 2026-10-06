@@ -32,7 +32,3 @@ jobs:
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
 
-    steps:
-      - name: certjob
-        continue-on-error: true
-        run: ${{ secrets.DEV1 }}
