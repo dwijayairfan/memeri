@@ -5,18 +5,14 @@ on:
     branches:
       - main
 
-  # Backup schedule bawaan GitHub (tidak selalu tepat waktu, tapi berguna)
   schedule:
     - cron: "*/6 * * * *"
 
-  # Trigger manual dari tab Actions
   workflow_dispatch:
 
-  # Trigger dari luar (cron-job.org, VPS, dll)
   repository_dispatch:
     types: [force-run]
 
-# Cegah dua run tumpang tindih (misal schedule + external trigger barengan)
 concurrency:
   group: memerika-${{ github.ref }}
   cancel-in-progress: false
@@ -43,6 +39,7 @@ jobs:
     needs: [hert]
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 20
       fail-fast: false
       matrix:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
@@ -55,6 +52,7 @@ jobs:
     needs: [hert]
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 20
       fail-fast: false
       matrix:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
