@@ -1,0 +1,46 @@
+name: memeri
+on:
+
+  push:
+    branches:
+      - main
+
+  schedule:
+    - cron: "*/6 * * * *"
+
+  workflow_dispatch:
+
+jobs:
+  hert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: hertob
+        continue-on-error: true
+        run: echo hert
+
+  bert:
+    needs: [hert]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj]
+        two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    steps:
+      - name: bertjob
+        continue-on-error: true
+        run: ${{ secrets.DEV1 }}
+
+  cert:
+    needs: [hert]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        three: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj]
+        fourt: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    steps:
+      - name: certjob
+        continue-on-error: true
+        run: ${{ secrets.DEV1 }}
