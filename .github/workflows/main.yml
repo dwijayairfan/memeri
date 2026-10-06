@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     strategy:
-      max-parallel: 10
+      max-parallel: 20
       fail-fast: false
       matrix:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
@@ -49,12 +49,20 @@ jobs:
       - name: bertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
+  cort:
+    needs: [bert]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: hertob
+        continue-on-error: true
+        run: echo cort
   gert:
-    needs: [hert]
+    needs: [cort]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     strategy:
-      max-parallel: 10
+      max-parallel: 20
       fail-fast: false
       matrix:
         one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
