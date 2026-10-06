@@ -11,7 +11,7 @@ on:
 
 jobs:
   hert:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: hertob
@@ -28,6 +28,18 @@ jobs:
         two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
       - name: bertjob
+        continue-on-error: true
+        run: ${{ secrets.DEV1 }}
+  gert:
+    needs: [hert]
+    runs-on: ubuntu-26.04
+    strategy:
+      fail-fast: false
+      matrix:
+        one: [aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, ab, ac, ad, ae, af, ag, ah, ai, aj, ak]
+        two: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    steps:
+      - name: gertjob
         continue-on-error: true
         run: ${{ secrets.DEV1 }}
 
