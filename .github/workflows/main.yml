@@ -1,6 +1,5 @@
 name: memerika
 on:
-
   push:
     branches:
       - main
